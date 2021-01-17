@@ -1,0 +1,27 @@
+[
+    {
+        "incomes": {
+            "salary": 1600
+        },
+        "expenses": {
+            "taxes": 300,
+            "homeMortagePayment": 200,
+            "schoolLoanPayment": 0,
+            "carLoanPayment": 100,
+            "creditCardPayment": 100,
+            "otherExpenses": 300,
+            "bankLoanPayment": 0,
+            "perChildExpenses": 100
+        },
+        "assets": {
+            "savings": 600
+        },
+        "liabilities": {
+            "homeMortage": 20000,
+            "schoolLoans": 0,
+            "carLoans": 4000,
+            "creditCardDebt": 3000,
+            "bankLoan": 0
+        }
+    }
+]

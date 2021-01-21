@@ -23,5 +23,30 @@
             "creditCardDebt": 3000,
             "bankLoan": 0
         }
+    },
+    {
+        "incomes": {
+            "salary": 4600
+        },
+        "expenses": {
+            "taxes": 600,
+            "homeMortagePayment": 300,
+            "schoolLoanPayment": 0,
+            "carLoanPayment": 100,
+            "creditCardPayment": 100,
+            "otherExpenses": 300,
+            "bankLoanPayment": 500,
+            "perChildExpenses": 100
+        },
+        "assets": {
+            "savings": 1000
+        },
+        "liabilities": {
+            "homeMortage": 20000,
+            "schoolLoans": 0,
+            "carLoans": 4000,
+            "creditCardDebt": 3000,
+            "bankLoan": 0
+        }
     }
 ]

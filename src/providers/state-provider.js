@@ -1,41 +1,49 @@
 import React, { useState } from 'react';
 
+import professions from '../../data/professions.json';
+
 export const StateContext = React.createContext();
 
 export const StateProvider = ({ children }) => {
   const initialState = {
-    incomes: {
-      salary: 1600,
-      passiveIncomes: 0
-    },
-    expenses: {
-      taxes: 300,
-      homeMortagePayment: 200,
-      schoolLoanPayment: 0,
-      carLoanPayment: 100,
-      creditCardPayment: 100,
-      otherExpenses: 300,
-      bankLoanPayment: 0,
-      childExpenses: 0,
-    },
-    assets: {
-      savings: 600,
-    },
-    liabilities: {
-      homeMortage: 20000,
-      schoolLoans: 0,
-      carLoans: 4000,
-      creditCardDebt: 3000,
-      bankLoan: 0,
-    },
+    totalPassiveIncomes: 0,
+    totalIncomes: 0,
+    totalExpenses: 0,
+    monthlyCashflow: 0,
+    balance: 0,
+
   };
   const [data, setData] = useState(initialState);
+
+  const getTotal = object => Object.values(object).reduce((total, value) => total + value, 0);
+
+  const setProfession = professionIndex => {
+    const professionData = professions[professionIndex];
+    const totalIncomes = professionData.incomes.salary;
+    const totalExpenses = getTotal(professionData.expenses)
+    const monthlyCashflow = totalIncomes - totalExpenses;
+    
+    setData({ 
+      ...data,
+      ...professionData,
+      totalIncomes,
+      totalExpenses,
+      monthlyCashflow,
+      balance: professionData.assets.savings + monthlyCashflow,
+    });
+  }
+
+  const addMonthlyCashflow = () => {
+    setData({...data, balance: data.balance + data.monthlyCashflow });
+  }
 
   return (
     <StateContext.Provider
       value={{
         data,
         setData,
+        setProfession,
+        addMonthlyCashflow,
       }}
     >
       {children}
